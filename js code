@@ -1,0 +1,18 @@
+// double click can edit：
+$(doucment).on('dblclick', '.class', function(){
+    var td = $(this);
+    // 根据表格文本创建文本框 并加入表表中--文本框的样式自己调整
+    var text = td.text();
+    var txt = $("<input type='text'>").val(text);
+    txt.blur(function(){
+        // 失去焦点，保存值。于服务器交互自己再写,最好ajax
+        var newText = $(this).val();
+         
+        // 移除文本框,显示新值
+        $(this).remove();
+        td.text(newText);
+    });
+    td.text("");
+    td.append(txt);
+});
+
